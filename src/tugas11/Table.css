@@ -1,0 +1,21 @@
+table {
+  border: 1px solid black;
+}
+
+th {
+  background-color: lightgray;
+}
+
+th:not(:first-child) {
+  padding: 5px 40px;
+}
+
+th:first-child {
+  padding: 5px 150px;
+}
+
+td {
+  text-align: left;
+  background-color: salmon;
+  padding: 5px 0;
+}
