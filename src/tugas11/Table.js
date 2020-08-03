@@ -1,15 +1,7 @@
 import React from "react";
 import "./Table.css";
 
-const Table = () => {
-  let dataHargaBuah = [
-    { nama: "Semangka", harga: 10000, berat: 1000 },
-    { nama: "Anggur", harga: 40000, berat: 500 },
-    { nama: "Strawberry", harga: 30000, berat: 400 },
-    { nama: "Jeruk", harga: 30000, berat: 1000 },
-    { nama: "Mangga", harga: 30000, berat: 500 },
-  ];
-
+const Table = ({ data }) => {
   return (
     <div>
       <h1>Tabel Harga Buah</h1>
@@ -19,11 +11,11 @@ const Table = () => {
           <th>Harga</th>
           <th>Berat</th>
         </tr>
-        {dataHargaBuah.map((data) => (
+        {data.map((daftar) => (
           <tr>
-            <td>{data.nama}</td>
-            <td>{data.harga}</td>
-            <td>{data.berat / 1000} kg</td>
+            <td>{daftar.nama}</td>
+            <td>{daftar.harga}</td>
+            <td>{daftar.berat / 1000} kg</td>
           </tr>
         ))}
       </table>
