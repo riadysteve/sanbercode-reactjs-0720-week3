@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Table from "./tugas11/Table";
+import Timer from "./tugas12/Timer";
 
 function App() {
   let dataHargaBuah = [
@@ -11,7 +12,14 @@ function App() {
     { nama: "Mangga", harga: 30000, berat: 500 },
   ];
 
-  return <Table data={dataHargaBuah} />;
+  return (
+    <div>
+      {/* Tugas 11 */}
+      <Table data={dataHargaBuah} />
+      {/* Tugas 12 */}
+      <Timer />
+    </div>
+  );
 }
 
 export default App;
