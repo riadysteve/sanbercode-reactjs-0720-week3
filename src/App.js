@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import Table from "./tugas11/Table";
+import Table from "./tugas13/Table";
+// eslint-disable-next-line
 import Timer from "./tugas12/Timer";
 
 function App() {
@@ -15,9 +16,13 @@ function App() {
   return (
     <div>
       {/* Tugas 11 */}
-      <Table data={dataHargaBuah} />
+      {/* <Table data={dataHargaBuah} /> */}
+
       {/* Tugas 12 */}
-      <Timer />
+      {/* <Timer /> */}
+
+      {/* Tugas 13 */}
+      <Table data={dataHargaBuah} />
     </div>
   );
 }
