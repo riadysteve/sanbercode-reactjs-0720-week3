@@ -19,9 +19,9 @@ const Table = () => {
             res.data.map((item) => {
               return {
                 id: item.id,
-                nama: item.name,
-                harga: item.price,
-                berat: item.weight,
+                name: item.name,
+                price: item.price,
+                weight: item.weight,
               };
             })
           );
@@ -34,12 +34,14 @@ const Table = () => {
   }, [data]);
 
   const handleChange = (event) => {
-    if (event.target.name === "nama") {
+    if (event.target.name === "name") {
       setInputNama(event.target.value);
-    } else if (event.target.name === "harga") {
+    } else if (event.target.name === "price") {
       setInputHarga(event.target.value);
-    } else if (event.target.name === "berat") {
+    } else if (event.target.name === "weight") {
       setInputBerat(event.target.value);
+    } else {
+      return;
     }
   };
 
@@ -48,9 +50,9 @@ const Table = () => {
     let dataEdit = data.find((item) => item.id === index);
     // console.log(data.find((item) => item.id === index));
     // console.log(index);
-    setInputNama(dataEdit.nama);
-    setInputHarga(dataEdit.harga);
-    setInputBerat(dataEdit.berat);
+    setInputNama(dataEdit.name);
+    setInputHarga(dataEdit.price);
+    setInputBerat(dataEdit.weight);
     setIndexofForm(index);
     setStatusForm("edit");
   };
@@ -73,7 +75,10 @@ const Table = () => {
     let index = indexofForm;
     // console.log(index);
 
-    if (inputNama && inputHarga && inputBerat) {
+    if (
+      inputNama.replace(/\s/g, "") !== "" &&
+      inputHarga.replace(/\s/g, "") !== ""
+    ) {
       if (statusForm === "create") {
         axios
           .post(`http://backendexample.sanbercloud.com/api/fruits`, {
@@ -101,6 +106,7 @@ const Table = () => {
           })
           .then((res) => {
             let updatedData = data.find((item) => item.id === index);
+            console.log(updatedData);
             updatedData.name = inputNama;
             updatedData.price = inputHarga;
             updatedData.weight = inputBerat;
@@ -132,9 +138,9 @@ const Table = () => {
           {data !== null &&
             data.map((item) => (
               <tr key={item.id}>
-                <td>{item.nama}</td>
-                <td>{item.harga}</td>
-                <td>{item.berat / 1000} kg</td>
+                <td>{item.name}</td>
+                <td>{item.price}</td>
+                <td>{item.weight / 1000} kg</td>
                 <td>
                   <button value={item.id} onClick={handleEdit}>
                     Edit
@@ -159,7 +165,7 @@ const Table = () => {
           <label>Masukkan Nama Buah</label>
           <input
             type="text"
-            name="nama"
+            name="name"
             value={inputNama}
             onChange={handleChange}
           />
@@ -168,7 +174,7 @@ const Table = () => {
           <label>Masukkan Harga Buah</label>
           <input
             type="text"
-            name="harga"
+            name="price"
             value={inputHarga}
             onChange={handleChange}
           />
@@ -177,7 +183,7 @@ const Table = () => {
           <label>Masukkan Berat Buah</label>
           <input
             type="text"
-            name="berat"
+            name="weight"
             value={inputBerat}
             onChange={handleChange}
           />
